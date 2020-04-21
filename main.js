@@ -8,7 +8,7 @@ const handleFileUpload = file => {
     file
       .pipe(outFile)
       .on('error', err => {
-        console.log(err)
+        console.error(err)
         reject(err)
       })
       .on('close', () => {
@@ -28,8 +28,7 @@ const handleFileUpload = file => {
     method: 'POST',
     options: {
       payload: {
-        maxBytes: 1024 * 1024 * 100,
-        // timeout: false, // important
+        maxBytes: 1024 * 1024 * 100, // max 100MB
         parse: true,
         output: 'stream',
         allow: 'multipart/form-data',
